@@ -1,0 +1,14 @@
+name: project-setup
+on: push
+jobs:	
+  build:
+   runs-on: ubuntu-latest
+   steps:
+    - uses: actions/checkout@v4
+    - name: using
+      run: make setup
+    - name: run tests
+      run: make test	
+    - name: run linter
+      run: make lint
+
