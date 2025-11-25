@@ -1,14 +1,21 @@
 name: project-setup
+
 on: push
+
 jobs:	
   build:
-   runs-on: ubuntu-latest
+
+   runs-on: ubuntu-latest  
+  
    steps:
     - uses: actions/checkout@v4
-    - name: using
-      run: make setup
-    - name: run tests
-      run: make test	
-    - name: run linter
-      run: make lint
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '16.x'
+        cache: 'npm'
+    - run: make setup	
+    - run: make lint
+    - run: make test 
+    - name: Print Hello from Hexlet
+    - uses: hexlet-components/hello-from-hexlet-action@release
 
